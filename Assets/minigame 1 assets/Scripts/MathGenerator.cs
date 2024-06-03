@@ -7,6 +7,7 @@ public class MathGenerator : MonoBehaviour
     int SecondRandomnumber;
     [SerializeField] TMP_Text displayNumber1;
     [SerializeField] TMP_Text displayNumber2;
+    
 
     // Update is called once per frame
     void Update()
