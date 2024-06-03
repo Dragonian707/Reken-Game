@@ -5,17 +5,6 @@ using UnityEngine;
 public class NumberSelector : MonoBehaviour
 {
     int[] numbers = { 11, 8, 16, 7, 19, 3, 17, 2, 15, 10, 6, 13, 4, 18, 1, 20, 5, 12, 9, 14, 11 };
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void CheckHit()
     {
@@ -54,6 +43,7 @@ public class NumberSelector : MonoBehaviour
             points *= 2;
         }
         //--------------------------------------------------------------
+        FindObjectOfType<ScoreTracker>().AddScore(points);
         Debug.Log(points);
     }
 }
