@@ -12,12 +12,14 @@ public class QuestionManager : MonoBehaviour
     int one = 0;
     int two = 0;
     int op = 0;
+    int correctAnswer = 0;
 
-    public void NewQuestion()
+    public int NewQuestion()
     {
         op = Random.Range(0, 4);
         bool questionMade = false;
         Debug.Log(op);
+        answerText.text = "???";
 
         while (!questionMade)
         {
@@ -27,6 +29,7 @@ public class QuestionManager : MonoBehaviour
                     one = Random.Range(1, 101);
                     two = Random.Range(1, 101);
                     Debug.Log(one + " " + two);
+                    correctAnswer = one + two;
                     questionMade = true;
                     break;
                 case 1:
@@ -35,6 +38,7 @@ public class QuestionManager : MonoBehaviour
                     Debug.Log(one + " " + two);
                     if (one >= two)
                     {
+                        correctAnswer = one - two;
                         questionMade = true;
                     }
                     break;
@@ -42,23 +46,21 @@ public class QuestionManager : MonoBehaviour
                     one = Random.Range(0, 11);
                     two = Random.Range(0, 13);
                     Debug.Log(one + " " + two);
+                    correctAnswer = one * two;
                     questionMade = true;
                     break;
                 case 3:
-                    one = Random.Range(0, 120);
-                    two = Random.Range(0, 13);
+                    one = Random.Range(1, 120);
+                    two = Random.Range(1, 13);
                     float f = (float)one / (float)two;
                     Debug.Log(f);
                     int t = Mathf.RoundToInt(f);
-                    if (f == t)
+                    if (f == t && t <= 10)
                     {
+                        correctAnswer = t;
                         questionMade = true;
                     }
                     break;
-            }
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                questionMade = true;
             }
         }
 
@@ -68,11 +70,13 @@ public class QuestionManager : MonoBehaviour
         questionText.text += " ";
         questionText.text += two.ToString();
         questionText.text += " =";
+        return correctAnswer;
     }
 
-    public void CheckAnswer()
+    public bool CheckAnswer(int answer)
     {
-        int answer = GetComponent<ScoreTracker>().GetPoints();
         answerText.text = answer.ToString();
+
+        return answer == correctAnswer;
     }
 }
