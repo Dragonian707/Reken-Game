@@ -18,12 +18,14 @@ public class NumberSelector : MonoBehaviour
         {
             points = 50;
             Debug.Log(points);
+            FindObjectOfType<ScoreTracker>().AddScore(points);
             return;
         }
         if (pos.magnitude < 0.0926 * devideNumber)
         {
             points = 25;
             Debug.Log(points);
+            FindObjectOfType<ScoreTracker>().AddScore(points);
             return;
         }
         //--------------------------------------------------------------
@@ -41,6 +43,10 @@ public class NumberSelector : MonoBehaviour
         if (pos.magnitude > 0.7593 * devideNumber && pos.magnitude < 0.8148 * devideNumber)
         {
             points *= 2;
+        }
+        if (pos.magnitude >= 0.8148 * devideNumber)
+        {
+            points = 0;
         }
         //--------------------------------------------------------------
         FindObjectOfType<ScoreTracker>().AddScore(points);

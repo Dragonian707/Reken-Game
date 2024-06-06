@@ -6,13 +6,13 @@ using UnityEngine.UI;
 public class ScoreTracker : MonoBehaviour
 {
     [SerializeField] Text scoreText;
-    [SerializeField] Text pointsRemainingText;
+    [SerializeField] Text pointsText;
 
-    int pointsRemaining = 301;
+    int points = 0;
     // Start is called before the first frame update
     void Start()
     {
-        pointsRemainingText.text = "301";
+        pointsText.text = "0";
         scoreText.text = "";
     }
 
@@ -20,13 +20,16 @@ public class ScoreTracker : MonoBehaviour
     {
         scoreText.text += score.ToString();
         scoreText.text += "\n";
-        pointsRemaining -= score;
-        pointsRemainingText.text = pointsRemaining.ToString();
+        points += score;
+        pointsText.text = points.ToString();
     }
 
-    public void ShowExplanation()
+    public void ResetPoints()
     {
-        Animator anim = FindObjectOfType<Animator>();
-        anim.SetBool("exp", !anim.GetBool("exp"));
+        points = 0;
+        pointsText.text = "0";
+        scoreText.text = "";
     }
+
+    public int GetPoints() { return points; }
 }
