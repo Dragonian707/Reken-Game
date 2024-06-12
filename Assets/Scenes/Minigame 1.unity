@@ -488,7 +488,7 @@ GameObject:
   - component: {fileID: 305822978}
   - component: {fileID: 305822977}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: antwoord 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -698,7 +698,7 @@ GameObject:
   - component: {fileID: 966175995}
   - component: {fileID: 966175994}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: antwoord 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -926,7 +926,7 @@ GameObject:
   - component: {fileID: 1315193266}
   - component: {fileID: 1315193265}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: antwoord 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1098,6 +1098,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayNumber1: {fileID: 1532483565}
   displayNumber2: {fileID: 2016215358}
+  answerTexts:
+  - {fileID: 966175994}
+  - {fileID: 1315193265}
+  - {fileID: 2000105957}
+  - {fileID: 305822977}
 --- !u!1 &1532483564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1657,7 +1662,7 @@ GameObject:
   - component: {fileID: 2000105958}
   - component: {fileID: 2000105957}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: antwoord 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
