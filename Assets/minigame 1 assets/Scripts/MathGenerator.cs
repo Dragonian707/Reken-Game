@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class MathGenerator : MonoBehaviour
 {
@@ -12,13 +13,18 @@ public class MathGenerator : MonoBehaviour
     [SerializeField] TMP_Text displayNumber1;
     [SerializeField] TMP_Text displayNumber2;
     [SerializeField] TMP_Text[] answerTexts;  // Text components on the cans
+    [SerializeField] Button[] answerButtons;  // Button components on the cans
+    [SerializeField] TMP_Text feedbackText;   // Text component for feedback
 
-    void Update()
+    void Start()
     {
-        if (Input.GetKeyDown("space"))
+        for (int i = 0; i < answerButtons.Length; i++)
         {
-            CreateRandomNumber();
+            int index = i;  // Capture the current value of i
+            answerButtons[i].onClick.AddListener(() => OnAnswerSelected(index));
         }
+        CreateRandomNumber(); // Call CreateRandomNumber when the game starts
+        feedbackText.gameObject.SetActive(false); // Hide feedback text initially
     }
 
     public void CreateRandomNumber()
@@ -63,5 +69,31 @@ public class MathGenerator : MonoBehaviour
         {
             answerTexts[i].text = Answers[i].ToString();
         }
+    }
+
+    public void OnAnswerSelected(int index)
+    {
+        if (Answers[index] == CorrectAnswer)
+        {
+            StartCoroutine(ShowFeedback("Goed!", Color.green));
+        }
+        else
+        {
+            StartCoroutine(ShowFeedback("Fout!", Color.red));
+        }
+
+        // Generate new numbers and answers
+        CreateRandomNumber();
+    }
+
+    IEnumerator ShowFeedback(string message, Color color)
+    {
+        feedbackText.text = message;
+        feedbackText.color = color;
+        feedbackText.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(2); // Show feedback for 2 seconds
+
+        feedbackText.gameObject.SetActive(false);
     }
 }
