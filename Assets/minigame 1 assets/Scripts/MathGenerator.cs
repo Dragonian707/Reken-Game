@@ -9,12 +9,16 @@ public class MathGenerator : MonoBehaviour
     int SecondRandomNumber;
     int CorrectAnswer;
     int[] Answers = new int[4];
+    int Goed = 0;
+    int Fout = 0;
 
     [SerializeField] TMP_Text displayNumber1;
     [SerializeField] TMP_Text displayNumber2;
     [SerializeField] TMP_Text[] answerTexts;  // Text components on the cans
     [SerializeField] Button[] answerButtons;  // Button components on the cans
     [SerializeField] TMP_Text feedbackText;   // Text component for feedback
+    [SerializeField] TMP_Text GoedText;   // Text component for the score of wrong answers
+    [SerializeField] TMP_Text FoutText;   // Text component for the score of wrong answers
 
     void Start()
     {
@@ -71,11 +75,16 @@ public class MathGenerator : MonoBehaviour
         if (Answers[index] == CorrectAnswer)
         {
             StartCoroutine(ShowFeedback("Goed!", Color.green));
+            Goed++;
         }
         else
         {
             StartCoroutine(ShowFeedback("Fout!", Color.red));
+            Fout++;
         }
+
+        GoedText.SetText(Goed.ToString());
+        FoutText.SetText(Fout.ToString());
 
         // Generate new numbers and answers
         CreateRandomNumber();
