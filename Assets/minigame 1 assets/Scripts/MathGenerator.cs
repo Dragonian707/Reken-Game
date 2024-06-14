@@ -18,11 +18,6 @@ public class MathGenerator : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < answerButtons.Length; i++)
-        {
-            int index = i;  // Capture the current value of i
-            answerButtons[i].onClick.AddListener(() => OnAnswerSelected(index));
-        }
         CreateRandomNumber(); // Call CreateRandomNumber when the game starts
         feedbackText.gameObject.SetActive(false); // Hide feedback text initially
     }
