@@ -14,9 +14,18 @@ public class QuestionManager : MonoBehaviour
     int op = 0;
     int correctAnswer = 0;
 
-    public int NewQuestion()
+    //Call this method if you want to generate a new random question
+    public int NewQuestion(int dificulty = 1, int operater = 5)
     {
-        op = Random.Range(0, 4);
+        if (operater >= 5)
+        {
+            op = Random.Range(0, 4);
+        }
+        else
+        {
+            op = operater;
+        }
+
         bool questionMade = false;
         Debug.Log(op);
         answerText.text = "???";
@@ -25,16 +34,19 @@ public class QuestionManager : MonoBehaviour
         {
             switch (op)
             {
-                case 0:
-                    one = Random.Range(1, 101);
-                    two = Random.Range(1, 101);
+                case 0: //addition (+)
+                    one = Random.Range(1, 101 * dificulty);
+                    two = Random.Range(1, 101 * dificulty);
                     Debug.Log(one + " " + two);
                     correctAnswer = one + two;
-                    questionMade = true;
+                    if (correctAnswer <= 100 * dificulty)
+                    {
+                        questionMade = true;
+                    }
                     break;
-                case 1:
-                    one = Random.Range(1, 101);
-                    two = Random.Range(1, 101);
+                case 1: //subtraction (-)
+                    one = Random.Range(1, 101 * dificulty);
+                    two = Random.Range(1, 101 * dificulty);
                     Debug.Log(one + " " + two);
                     if (one >= two)
                     {
@@ -42,20 +54,20 @@ public class QuestionManager : MonoBehaviour
                         questionMade = true;
                     }
                     break;
-                case 2:
-                    one = Random.Range(0, 11);
+                case 2: //multiplication (x)
+                    one = Random.Range(0, 11 * dificulty);
                     two = Random.Range(0, 13);
                     Debug.Log(one + " " + two);
                     correctAnswer = one * two;
                     questionMade = true;
                     break;
-                case 3:
-                    one = Random.Range(1, 120);
+                case 3: //division (/)
+                    one = Random.Range(1, 120 * dificulty);
                     two = Random.Range(1, 13);
                     float f = (float)one / (float)two;
                     Debug.Log(f);
                     int t = Mathf.RoundToInt(f);
-                    if (f == t && t <= 10)
+                    if (f == t && t <= 10 * dificulty)
                     {
                         correctAnswer = t;
                         questionMade = true;
@@ -73,6 +85,7 @@ public class QuestionManager : MonoBehaviour
         return correctAnswer;
     }
 
+    //Check if the submitted answer is correct and send true or false back;
     public bool CheckAnswer(int answer)
     {
         answerText.text = answer.ToString();
