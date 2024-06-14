@@ -15,6 +15,8 @@ public class ScoreTracker : MonoBehaviour
     float timer = 0;
     bool reset = false;
     int points = 0;
+    int amountCorrect = 0;
+    int dificulty = 1;
 
     void Start()
     {
@@ -23,7 +25,7 @@ public class ScoreTracker : MonoBehaviour
 
         ResetPoints();
         imageAnim.SetBool("unhide", false);
-        FindObjectOfType<QuestionManager>().NewQuestion(1);
+        FindObjectOfType<QuestionManager>().NewQuestion(dificulty);
         reset = true;
     }
 
@@ -36,7 +38,7 @@ public class ScoreTracker : MonoBehaviour
         {
             ResetPoints();
             imageAnim.SetBool("unhide", false);
-            FindObjectOfType<QuestionManager>().NewQuestion(1);
+            FindObjectOfType<QuestionManager>().NewQuestion(dificulty);
             reset = true;
         }
     }
@@ -63,13 +65,19 @@ public class ScoreTracker : MonoBehaviour
     {
         bool c = FindObjectOfType<QuestionManager>().CheckAnswer(points);
 
-        if (c)  { correctImage.sprite = correct; }
+        if (c)  { correctImage.sprite = correct; amountCorrect++; }
         else    { correctImage.sprite = incorrect; }
 
         //start the animation to reveal if it is correct
         imageAnim.SetBool("unhide", true);
         reset = false;
         timer = 0;
+
+        if (amountCorrect == 10)
+        {
+            amountCorrect = 0;
+            dificulty++;
+        }
     }
 }
 

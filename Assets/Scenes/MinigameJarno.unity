@@ -1540,7 +1540,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 75}
+  m_SizeDelta: {x: 150, y: 75}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1335569434
 MonoBehaviour:
@@ -1569,7 +1569,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 70
-    m_Alignment: 7
+    m_Alignment: 8
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -2004,7 +2004,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -225, y: -50}
-  m_SizeDelta: {x: 300, y: 75}
+  m_SizeDelta: {x: 330, y: 75}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2038949575
 MonoBehaviour:
@@ -2039,7 +2039,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 88 X 88 =
+  m_Text: 888 X 888 =
 --- !u!222 &2038949576
 CanvasRenderer:
   m_ObjectHideFlags: 0
