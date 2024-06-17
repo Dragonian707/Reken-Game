@@ -8,12 +8,15 @@ using UnityEngine.UI;
 
 public class Safe : MonoBehaviour
 {
+	
+	
 
 
     // Start is called before the first frame update
     void Start()
     {
         
+		
     }
 
     // Update is called once per frame
@@ -26,18 +29,23 @@ public class Safe : MonoBehaviour
 	{
 		Slider slider = GetComponent<Slider>();
 
-		if (slider.value < 52)
+		if (slider.value < 50)
 		{
 			NumberDisplayChanger(0);
 		}
-		else if (slider.value > 150)
+		else if (slider.value < 150 && slider.value > 50)
+		{
+			NumberDisplayChanger(1);
+
+		}
+		else if (slider.value < 250 && slider.value > 150)
 		{
 			NumberDisplayChanger(2);
 
 		}
 		else 
 		{
-			NumberDisplayChanger(1);
+			NumberDisplayChanger(3);
 		}
 
 	}
@@ -54,12 +62,15 @@ public class Safe : MonoBehaviour
 			
 			case 2:
 				break;
+
+			case 3: 
+				break;	
 		
 		}
 	}
 
 	void VaultRotation() 
-	{ 
+	{
 		
 	}
 
