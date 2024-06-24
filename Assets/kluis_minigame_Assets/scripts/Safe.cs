@@ -7,12 +7,14 @@ using UnityEngine.UI;
 
 public class Safe : MonoBehaviour
 {
-	
-	
 
+	[SerializeField] Slider slider;
+	[SerializeField] Text[] displayText;
 
-    // Start is called before the first frame update
-    void Start()
+	int[] combination = {0,0,0,0 };
+
+	// Start is called before the first frame update
+	void Start()
     {
         
 		
@@ -21,23 +23,23 @@ public class Safe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+		
     }
 
-	void SlideNumberSelector() 
+	public void SlideNumberSelector() 
 	{
-		Slider slider = GetComponent<Slider>();
+		
 
-		if (slider.value < 50)
+		if (slider.value <= 50)
 		{
 			NumberDisplayChanger(0);
 		}
-		else if (slider.value < 150 && slider.value > 50)
+		else if (slider.value <= 150 && slider.value > 50)
 		{
 			NumberDisplayChanger(1);
 
 		}
-		else if (slider.value < 250 && slider.value > 150)
+		else if (slider.value <= 250 && slider.value > 150)
 		{
 			NumberDisplayChanger(2);
 
@@ -51,26 +53,43 @@ public class Safe : MonoBehaviour
 
 	void NumberDisplayChanger(int display) 
 	{
-		switch(display)
-		{ 
-			case 0:
-				break;
-			
-			case 1:
-				break;
-			
-			case 2:
-				break;
-
-			case 3: 
-				break;	
 		
-		}
+		
+
+		int displaynumber = FindObjectOfType<TurnKnob>().getComboNumber();
+		
+		combination[display] = (int)(displaynumber * Mathf.Pow(10, 3 -display));
+		
+
+		displayText[display].text = displaynumber.ToString();
 	}
 
-	void VaultRotation() 
+	public int GetAnswer() 
+	{
+		int answer = 0;
+		foreach (int N in combination) 
+		{
+			answer += N;	
+		}
+		SafeReset();
+		return answer;
+	}
+
+	private void SafeReset()
 	{
 		
+
+		GameObject knob = GameObject.FindGameObjectWithTag("knob");
+		knob.transform.rotation = new Quaternion();
+
+		slider.value = 0;
+
+		displayText[0].text = "0";
+		displayText[1].text = "0";
+		displayText[2].text = "0";
+		displayText[3].text = "0";
+
+
 	}
 
 }
