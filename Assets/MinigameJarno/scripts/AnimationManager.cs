@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AnimationManager : MonoBehaviour
 {
@@ -8,5 +9,10 @@ public class AnimationManager : MonoBehaviour
     public void ShowExplanation()
     {
         explainAnim.SetBool("exp", !explainAnim.GetBool("exp"));
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
