@@ -71,11 +71,11 @@ public class Safe : MonoBehaviour
 		{
 			answer += N;	
 		}
-		SafeReset();
+		
 		return answer;
 	}
 
-	private void SafeReset()
+	public void SafeReset()
 	{
 		
 
@@ -83,6 +83,11 @@ public class Safe : MonoBehaviour
 		knob.transform.rotation = new Quaternion();
 
 		slider.value = 0;
+
+		combination[0] = 0;
+		combination[1] = 0;
+		combination[2] = 0;
+		combination[3] = 0;
 
 		displayText[0].text = "0";
 		displayText[1].text = "0";
