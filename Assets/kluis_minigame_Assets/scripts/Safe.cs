@@ -26,6 +26,7 @@ public class Safe : MonoBehaviour
 		
     }
 
+	//changes the which display is selected for number changes based on the slider value
 	public void SlideNumberSelector() 
 	{
 		
@@ -50,7 +51,8 @@ public class Safe : MonoBehaviour
 		}
 
 	}
-
+	
+	// changes the number on the display to the number you selected
 	void NumberDisplayChanger(int display) 
 	{
 		
@@ -64,6 +66,7 @@ public class Safe : MonoBehaviour
 		displayText[display].text = displaynumber.ToString();
 	}
 
+	//gets all the turns the numbers you selected in the answer
 	public int GetAnswer() 
 	{
 		int answer = 0;
@@ -75,10 +78,9 @@ public class Safe : MonoBehaviour
 		return answer;
 	}
 
+	// resets the safe for the next question
 	public void SafeReset()
 	{
-		
-
 		GameObject knob = GameObject.FindGameObjectWithTag("knob");
 		knob.transform.rotation = new Quaternion();
 

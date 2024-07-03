@@ -20,11 +20,13 @@ public class SafeButtons : MonoBehaviour
         
     }
 
+	//sends you back to the menu
 	public void BackToMenu()
 	{
 		SceneManager.LoadScene(0);
 	}
 
+	//toggle the exlaination of the minigame
 	public void ToggleExplaination() 
 	{
 		if (!explanation.activeSelf) 

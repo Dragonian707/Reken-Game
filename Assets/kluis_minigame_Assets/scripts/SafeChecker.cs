@@ -18,8 +18,10 @@ public class SafeChecker : MonoBehaviour
     void Update()
     {
 
+		// helps with reseting the scene
 		if ( !reset)
 		{
+			
 			if (timer > 1f) 
 			{
 				background.color = new Color(0.631f, 0.804f, 0.945f, 1);
@@ -33,6 +35,7 @@ public class SafeChecker : MonoBehaviour
 		}
 	}
 
+	//submits the answer and checks if its correct
 	public void SubmitAnswer() 
 	{
 
